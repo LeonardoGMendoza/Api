@@ -1,0 +1,181 @@
+﻿@page
+@model DetalhesModel
+@{
+    ViewData["Title"] = "Detalhamento";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Sistema de Placa</h1>
+    <p>Formulário modelo para envio de dados no API Placa</p>
+</div>
+
+
+
+    <div class="row">
+        <div class="col">
+            <label>Tipo Regional </label> <br />
+            <input type="text" class="form-control" asp-for="Payload.TipoRegional.Reg_Descricao" readonly="readonly" />
+           
+        </div>
+        <div class="col">
+            <label>Codigo </label> <br />
+            <input type="text" class="form-control" asp-for="Payload.Rod_Codigo" readonly="readonly" />
+        </div>
+
+        <div class="col">
+            <label>Data </label> <br />
+            <input type="date" class="form-control" asp-for="Payload.Rod_Data" readonly="readonly" />
+        </div>
+
+        <div class="col">
+            <label>KM Inicial </label> <br />
+            <input type="text" class="form-control" asp-for="Payload.Rod_KMInicial" readonly="readonly" />
+        </div>
+
+        <div class="col">
+            <label>KM Final </label> <br />
+            <input type="text" class="form-control" asp-for="Payload.Rod_KMFinal" readonly="readonly" />
+        </div>
+    </div>
+    <hr />
+   
+    <div class="row">
+
+        <div class="col">
+            <label>Tipo Pista </label> <br />
+            <input type="text" class="form-control" asp-for="Payload.Rod_TipoPista" readonly="readonly" />
+            
+        </div>
+
+        <div class="col">
+            <label>Sentido </label> <br />
+            <input type="text" class="form-control" asp-for="Payload.Rod_Sentido" readonly="readonly" />
+            
+        </div>
+
+        <div class="col">
+            <label>Posição </label> <br />
+            <input type="text" class="form-control" asp-for="Payload.Rod_Posicao" readonly="readonly" />
+            
+        </div>
+
+        <div class="col">
+            <label>Tipo Localização </label> <br />
+            <input type="text" class="form-control" asp-for="Payload.Rod_localizacao" readonly="readonly" />
+
+        </div>
+
+    </div>
+    <hr />
+    <div class="row">
+
+        <div class="col">
+            <label>TS </label> <br />
+            <input type="text" class="form-control" asp-for="Payload.Rod_Ts" readonly="readonly" />
+        </div>
+
+        <div class="col">
+            <label>Classe </label> <br />
+            <input type="text" class="form-control" asp-for="Payload.Rod_Classe" readonly="readonly" />
+            
+        </div>
+
+        <div class="col">
+            <label>Implantação </label> <br />
+            <input type="text" class="form-control" asp-for="Payload.Rod_Implantacao" readonly="readonly" />
+        </div>
+    </div>
+    <hr />
+
+    <div class="row">
+        <div class="col">
+            <label>Estado Conservação </label> <br />
+            <input type="text" class="form-control" asp-for="Payload.Rod_Estado_Conservacao" readonly="readonly" />
+            
+        </div>
+
+        <div class="col">
+            <label>Situação </label> <br />
+            <input type="text" class="form-control" asp-for="Payload.Rod_Situacao" readonly="readonly" />
+        </div>
+
+        <div class="col">
+            <label>Atendimento Especificações </label> <br />
+            <input type="text" class="form-control" asp-for="Payload.Rod_Atendimento_Especificacoes" readonly="readonly" />
+        </div>
+    </div>
+    <hr />
+
+    <div class="row">
+
+        <div class="col">
+            <label>Georreferencia </label> <br />
+            <input type="text" class="form-control" asp-for="Payload.Rod_Georreferencia" readonly="readonly" />
+        </div>
+
+        <div class="col">
+            <label>Dimensões </label> <br />
+            <input type="text" class="form-control" asp-for="Payload.Rod_dimensoes" readonly="readonly" />
+        </div>
+
+        <div class="col">
+            <label>Cor </label> <br />
+            <input type="text" class="form-control" asp-for="Payload.Rod_Cor" readonly="readonly" />
+        </div>
+
+        <div class="col">
+            <label>Cadência Intervalo </label> <br />
+            <input type="text" class="form-control" asp-for="Payload.Rod_Cadencia_Intervalo" readonly="readonly" />
+        </div>
+
+    </div>
+    <hr />
+
+    <div class="row">
+
+        <div class="col">
+            <label>Retro. Obtida </label> <br />
+            <input type="text" class="form-control" asp-for="Payload.Rod_Retrorr_Obtida" readonly="readonly" />
+        </div>
+
+        <div class="col">
+            <label>Retro. Referência </label> <br />
+            <input type="text" class="form-control" asp-for="Payload.Rod_Retrorr_Referencia" readonly="readonly" />
+        </div>
+
+        <div class="col">
+            <label>QR.Code </label> <br />
+            <input type="text" class="form-control" asp-for="Payload.Rod_Qr_Code" readonly="readonly" />
+        </div>
+
+        <div class="col">
+            <label>Observação </label> <br />
+            <input type="text" class="form-control" asp-for="Payload.Rod_Observacao" readonly="readonly" />
+        </div>
+
+    </div>
+
+    <hr />
+
+    <div class="row">
+        <div class="col">
+            <label>Fotos</label> <br />
+
+            @foreach(var item in Model.Payload.SinalizacaoFotosItens) {
+
+            var imagemBytePrincipal = Convert.ToBase64String(System.IO.File.ReadAllBytes(item.Caminho_foto));
+            <img src="data:image/jpg;base64,@imagemBytePrincipal" /><hr />
+            }
+          
+        </div>
+    </div>
+
+    <hr />
+
+    <div class="row">
+        <div class="col">
+            <label>&nbsp;</label> <br />
+            <a  asp-page="./Listagem" class="btn btn-primary">Voltar </a>
+        </div>
+    </div>
+

@@ -1,0 +1,124 @@
+﻿@page
+@model ListagemModel
+@{
+    ViewData["Title"] = "Listagem";
+}
+
+
+<p>Listagem Sistema Placa</p>
+
+
+@if (Model.infoSinalizacoes.Any())
+{
+<form method="post" asp-action="/">
+    <div class="row">
+
+
+        <div class="col">
+            <label>Tipo Regional</label> <br />
+            <select asp-items="Model.TipoRegionais" class="form-control" asp-for="Payload.Rod_Tipo">
+                <option value="0">...</option>
+            </select>
+        </div>
+
+        <div class="col">
+            <label>Tipo Pista</label> <br />
+            <select asp-items="Model.TipoPistas" class="form-control" asp-for="Payload.Rod_TipoPista">
+                <option value="0">...</option>
+            </select>
+        </div>
+
+        <div class="col">
+            <label>Código</label> <br />
+            <input type="text" class="form-control" asp-for="Payload.Rod_Codigo" />
+        </div>
+
+        <div class="col">
+            <label>&nbsp;</label> <br />
+            <button type="submit" class="btn btn-primary">Buscar</button>
+        </div>
+
+    </div>
+
+</form>
+<hr />
+    <table class="table table-bordered table-responsive">
+        <thead>
+            <tr>
+                <th>Tipo</th>
+                <th>Código</th>
+                <th>Data</th>
+                <th>KM Inicial</th>
+                <th>KM Final</th>
+                <th>Tipo de Pista</th>
+                <th>Sentido</th>
+                <th>Posição</th>
+                <th>Localização</th>
+                <th>T.S</th>
+                <th>Class.</th>
+                <th>Necessidade de Implantação</th>
+                <th>EC</th>
+                <th>Situação</th>
+                <th>AE</th>
+                <th>Georreferência</th>
+                <th>Dimensões (m)</th>
+                <th>Cor</th>
+                <th>Cadencia/intervalo</th>
+                <th>Retrorr. Obtida 1 - (cd/lux/m2), 2 - (mcd.m-2.lx-1)</th>
+                <th>Retrorr. Refer.   1 - (cd/lux/m2), 2 - (mcd.m-2.lx-1)</th>
+                <th>QR CODE</th>
+                <th>Observação</th>
+                <th>Foto</th>
+                <th>Detalhes</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.infoSinalizacoes)
+            {
+                <tr>
+                    <td>@item.TipoRegional?.Reg_Descricao</td>
+                    <td>@item.Rod_Codigo</td>
+                    <td>@item.Rod_Data?.ToShortDateString()</td>
+                    <td>@item.Rod_KMInicial</td>
+                    <td>@item.Rod_KMFinal</td>
+                    <td>@item.TipoPista?.Pis_Descricao</td>
+                    <td>@item.Sentido?.Sen_Descricao</td>
+                    <td>@item.Posicao?.Pos_Descricao</td>
+                    <td>@item.Localizacao?.Loc_descricao</td>
+                    <td>@item.Rod_Ts</td>
+                    <td>@item.Sinalizacao?.Sin_Descricao</td>
+                    <td>@item.Rod_Implantacao</td>
+                    <td>@item.EstadoConservacao?.Con_Descricao</td>
+                    <td>@item.Rod_Situacao</td>
+                    <td>@item.AtendimentoEspecificacoes?.Esp_Descricao</td>
+                    <td>@item.Rod_Georreferencia</td>
+                    <td>@item.Rod_dimensoes</td>
+                    <td>@item.Rod_Cor</td>
+                    <td>@item.Rod_Cadencia_Intervalo</td>
+                    <td>@item.Rod_Retrorr_Obtida</td>
+                    <td>@item.Rod_Retrorr_Referencia</td>
+                    <td>@item.Rod_Qr_Code</td>
+                    <td>@item.Rod_Observacao</td>
+                    <td>
+                        @if (item.SinalizacaoFotosItens.Any())
+                        {
+
+                            var imagemBytePrincipal = Convert.ToBase64String(System.IO.File.ReadAllBytes(item.SinalizacaoFotosItens.FirstOrDefault(n => n.ite_foto == 1)?.Caminho_foto));
+                            <img src="data:image/jpg;base64,@imagemBytePrincipal" width="200" /><br />
+                        }
+                        else
+                        {
+                            <strong>Sem Fotos</strong>
+                        }
+                    </td>
+                    <td>
+                        <a asp-page="./Detalhes" asp-route-id="@item.Rod_id">Ver Detalhes</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+
+
+}

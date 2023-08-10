@@ -1,0 +1,11 @@
+D:\Projetos\Peruano\API\APIEstudo\APIEstudo\obj\Release\net5.0\PubTmp\Out\APIEstudo.exe
+D:\Projetos\Peruano\API\APIEstudo\APIEstudo\obj\Release\net5.0\PubTmp\Out\appsettings.Development.json
+D:\Projetos\Peruano\API\APIEstudo\APIEstudo\obj\Release\net5.0\PubTmp\Out\appsettings.json
+D:\Projetos\Peruano\API\APIEstudo\APIEstudo\obj\Release\net5.0\PubTmp\Out\APIEstudo.dll
+D:\Projetos\Peruano\API\APIEstudo\APIEstudo\obj\Release\net5.0\PubTmp\Out\APIEstudo.deps.json
+D:\Projetos\Peruano\API\APIEstudo\APIEstudo\obj\Release\net5.0\PubTmp\Out\APIEstudo.runtimeconfig.json
+D:\Projetos\Peruano\API\APIEstudo\APIEstudo\obj\Release\net5.0\PubTmp\Out\APIEstudo.pdb
+D:\Projetos\Peruano\API\APIEstudo\APIEstudo\obj\Release\net5.0\PubTmp\Out\Microsoft.OpenApi.dll
+D:\Projetos\Peruano\API\APIEstudo\APIEstudo\obj\Release\net5.0\PubTmp\Out\Swashbuckle.AspNetCore.Swagger.dll
+D:\Projetos\Peruano\API\APIEstudo\APIEstudo\obj\Release\net5.0\PubTmp\Out\Swashbuckle.AspNetCore.SwaggerGen.dll
+D:\Projetos\Peruano\API\APIEstudo\APIEstudo\obj\Release\net5.0\PubTmp\Out\Swashbuckle.AspNetCore.SwaggerUI.dll
